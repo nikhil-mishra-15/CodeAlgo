@@ -202,7 +202,6 @@ function QuestionsList() {
               <p className="font-semibold text-white">Problems failed to load</p>
               <p className="mt-1 text-sm text-zinc-400">{error}</p>
               <button
-                onClick={fetchTitles}
                 className="mt-5 rounded-lg bg-indigo-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-400 focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-500/30"
               >
                 Try again
