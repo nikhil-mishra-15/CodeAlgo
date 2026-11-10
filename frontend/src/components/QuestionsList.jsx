@@ -21,6 +21,26 @@ function QuestionsList() {
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
 
+    const fetchTitles = async () => {
+      setLoading(true);
+      setError("");
+      try {
+        const res = await fetch(`${API}/api/problems/titles`);
+        const data = await res.json();
+
+        if (data.success) {
+          setList(data.data);
+        } else {
+          setError(data.message || "Could not load problems.");
+        }
+      } catch (err) {
+        console.error("error in getting list of qs's", err);
+        setError("Could not reach the server. Check that the backend is running.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
   useEffect(() => {
 
     const getuser = async () => {
@@ -41,28 +61,6 @@ function QuestionsList() {
 
       console.log(logged);
     }
-
-
-
-    const fetchTitles = async () => {
-      setLoading(true);
-      setError("");
-      try {
-        const res = await fetch(`${API}/api/problems/titles`);
-        const data = await res.json();
-
-        if (data.success) {
-          setList(data.data);
-        } else {
-          setError(data.message || "Could not load problems.");
-        }
-      } catch (err) {
-        console.error("error in getting list of qs's", err);
-        setError("Could not reach the server. Check that the backend is running.");
-      } finally {
-        setLoading(false);
-      }
-    };
 
     getuser();
     fetchTitles();
