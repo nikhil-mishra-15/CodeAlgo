@@ -8,6 +8,7 @@ function Authenter() {
   const [loading, setLoading] = useState(true);
   const [loading1, setLoading1] = useState(true);
   const navigate = useNavigate();
+  const API = import.meta.env.VITE_API_URL;
 
   const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -20,7 +21,7 @@ function Authenter() {
   useEffect(() => {
     const getuser = async () => {
       try {
-        const res = await fetch("/api/users/current", {
+        const res = await fetch(`${API}/api/users/current`, {
           credentials: "include",
         });
 

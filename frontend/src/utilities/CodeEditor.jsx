@@ -13,6 +13,8 @@ const LANGUAGES = [
 ];
 
 export default function CodeEditor({slug,starterCode={}}){
+  const API = import.meta.env.VITE_API_URL;
+
     const [language, setlanguage] = useState("python");
 
     const [drafts,setdrafts] = useState({
@@ -35,7 +37,7 @@ export default function CodeEditor({slug,starterCode={}}){
 
         try{
             const {data} = await axios.post(
-                "/api/problems/submit",
+                `${API}/api/problems/submit`,
                 {slug,language,code},
                 {withCredentials:true}
             );

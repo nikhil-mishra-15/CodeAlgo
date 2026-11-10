@@ -6,6 +6,8 @@ import Login from './login';
 
 function Signuppage() {
    const navigate = useNavigate();
+   const API = import.meta.env.VITE_API_URL;
+
    //     const handlelogin= async()=>{
    //         await axios.post("/api/users/login",{
    //             email:data.email,
@@ -21,7 +23,7 @@ function Signuppage() {
             console.log("Signup props received");
 
             const res = await axios.post(
-               "/api/users/register",
+               `${API}/api/users/register`,
                { name, email, password }
             );
 

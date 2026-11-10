@@ -9,7 +9,8 @@ const difficultyStyles = {
 };
 
 function ProblemPage() {
- 
+  const API = import.meta.env.VITE_API_URL;
+
   const { slug } = useParams();
   const [problem, setProblem] = useState(null);
   const [error, setError] = useState("");
@@ -20,7 +21,7 @@ function ProblemPage() {
     setError("");
     setProblem(null);
     try {
-      const res = await fetch(`/api/problems/${slug}`);
+      const res = await fetch(`${API}/api/problems/${slug}`);
       const data = await res.json();
 
       if (data.success) {

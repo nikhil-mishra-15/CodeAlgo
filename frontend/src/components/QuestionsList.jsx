@@ -11,6 +11,8 @@ const difficultyStyles = {
 };
 
 function QuestionsList() {
+  const API = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   const [logged, setlogged] = useState(null);
   const [butt, setbuttons] = useState(false);
@@ -22,7 +24,7 @@ function QuestionsList() {
   useEffect(() => {
 
     const getuser = async () => {
-      const res = await fetch("/api/users/current", {
+      const res = await fetch(`${API}/api/users/current`, {
         method: "GET",
         credentials: "include"
       })
@@ -46,7 +48,7 @@ function QuestionsList() {
       setLoading(true);
       setError("");
       try {
-        const res = await fetch("/api/problems/titles");
+        const res = await fetch(`${API}/api/problems/titles`);
         const data = await res.json();
 
         if (data.success) {
