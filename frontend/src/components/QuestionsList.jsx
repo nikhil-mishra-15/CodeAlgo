@@ -70,7 +70,7 @@ function QuestionsList() {
   const logout = async () => {
 
     try {
-      const res = await fetch("/api/users/logout", {
+      const res = await fetch(`${API}/api/users/logout`, {
         method: "POST",
         credentials: "include"
       })
