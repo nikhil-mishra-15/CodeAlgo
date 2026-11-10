@@ -57,12 +57,12 @@ export const loginUser = asyncHandler(async (req, res) => {
         );
 
         res.cookie("token", token, {
-            httpOnly: true,
-            secure: false,
-            sameSite: "lax",
-            path: "/",
-            maxAge: 24 * 60 * 60 * 1000,
-        })
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
+    maxAge: 24 * 60 * 60 * 1000,
+});
 
         res.json({ message: "Login Success" });
     } else {
@@ -74,8 +74,8 @@ export const loginUser = asyncHandler(async (req, res) => {
 export const logoutuser = asyncHandler(async (req, res) => {
     res.clearCookie("token", {
         httpOnly: true,
-        secure: false,
-        sameSite: "lax",
+        secure: true,
+        sameSite: "none",
         path: "/",
     });
     return res.status(200).json({
